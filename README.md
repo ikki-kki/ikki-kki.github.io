@@ -3,6 +3,7 @@
 이끼끼 기술블로그
 
 # Astro Starter Kit: Blog
+
 <div align="center">
   <img alt="Astro Lane" src="/public/android-chrome-192x192.png" width="70" />
 </div>
@@ -21,18 +22,18 @@ Astro Lane is a customizable blog theme for Astro, designed to provide a persona
 
 ## Key Features:
 
--   Minimal styling (make it your own!)
--   Accessible, semantic HTML markup
--   Blazingly Fast
--   100/100 Lighthouse performance
--   Responsive & SEO-friendly with canonical URLs and OpenGraph data
--   [Astro Image Integration](https://docs.astro.build/en/guides/integrations-guide/image/) for optimized images
--   Sitemap support
--   [Automatic RSS feed support](https://docs.astro.build/en/guides/rss)
--   [Satori](https://github.com/vercel/satori) for creating open graph png images.
--   Markdown & MDX support
--   Draft Posts and Paginations
--   Prism code syntax styling using Atom Dark theme.
+- Minimal styling (make it your own!)
+- Accessible, semantic HTML markup
+- Blazingly Fast
+- 100/100 Lighthouse performance
+- Responsive & SEO-friendly with canonical URLs and OpenGraph data
+- [Astro Image Integration](https://docs.astro.build/en/guides/integrations-guide/image/) for optimized images
+- Sitemap support
+- [Automatic RSS feed support](https://docs.astro.build/en/guides/rss)
+- [Satori](https://github.com/vercel/satori) for creating open graph png images.
+- Markdown & MDX support
+- Draft Posts and Paginations
+- Prism code syntax styling using Atom Dark theme.
 
 ## Lighthouse Score
 
@@ -59,12 +60,12 @@ All commands are run from the root of the project, from a terminal:
 
 ## Documentation
 
--   [Configuration](https://astro-lane.chrstnl.com/blog/how-to-configure-astro-lane)
--   Configuring [SITE Defaults](https://astro-lane.chrstnl.com/blog/how-to-configure-astro-lane#configuring-site-defaults)
--   Configuring [Project Data](https://astro-lane.chrstnl.com/blog/how-to-configure-astro-lane#configuring-project-data)
--   [Adding A New Post](https://astro-lane.chrstnl.com/blog/adding-new-post)
--   [Markdown Guide](https://astro-lane.chrstnl.com/blog/markdown-style-guide)
--   [Tailwind Typography Guide](https://astro-lane.chrstnl.com/blog/tailwind-typography)
+- [Configuration](https://astro-lane.chrstnl.com/blog/how-to-configure-astro-lane)
+- Configuring [SITE Defaults](https://astro-lane.chrstnl.com/blog/how-to-configure-astro-lane#configuring-site-defaults)
+- Configuring [Project Data](https://astro-lane.chrstnl.com/blog/how-to-configure-astro-lane#configuring-project-data)
+- [Adding A New Post](https://astro-lane.chrstnl.com/blog/adding-new-post)
+- [Markdown Guide](https://astro-lane.chrstnl.com/blog/markdown-style-guide)
+- [Tailwind Typography Guide](https://astro-lane.chrstnl.com/blog/tailwind-typography)
 
 ## Want to learn more?
 
