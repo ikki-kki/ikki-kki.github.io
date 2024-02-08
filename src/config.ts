@@ -3,8 +3,8 @@
 import type { Site, SocialMediaObjects } from "./types";
 
 export const SITE: Site = {
-  siteUrl: "https://ikkikki.github.io/", // Always put "/" at the end of the URL
-  author: "ikkikki",
+  siteUrl: "https://ikki-kki.github.io/", // Always put "/" at the end of the URL
+  author: "ikki-kki",
   desc: "이끼끼 기술블로그",
   title: "이끼끼 기술블로그",
   ogImage: "images/ikkikki.webp",
