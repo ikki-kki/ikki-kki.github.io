@@ -1,5 +1,5 @@
 {
-  "name": "astro-lane",
+  "name": "ikki-kki",
   "type": "module",
   "version": "1.2.0",
   "description": "Lane - A personal portfolio landing template for developers and designers.",
@@ -17,8 +17,8 @@
     "tailwindcss",
     "tailwind"
   ],
-  "author": "chrstnl",
-  "homepage": "https://www.chrstnl.com/",
+  "author": "ikki-kki",
+  "homepage": "https://github.com/ikki-kki/",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
