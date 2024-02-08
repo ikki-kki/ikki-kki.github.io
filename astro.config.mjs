@@ -10,27 +10,28 @@ import prefetch from "@astrojs/prefetch";
 import { SITE } from "./src/config.ts";
 // https://astro.build/config
 export default defineConfig({
-    site: SITE.siteUrl,
-    markdown: {
-        syntaxHighlight: "prism",
-        remarkPlugins: [remarkToc, remarkReadingTime]
+  site: SITE.siteUrl,
+  base: "/",
+  markdown: {
+    syntaxHighlight: "prism",
+    remarkPlugins: [remarkToc, remarkReadingTime]
+  },
+  vite: {
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"]
     },
-    vite: {
-        optimizeDeps: {
-            exclude: ["@resvg/resvg-js"]
-        },
-        ssr: {
-            external: ["svgo"]
-        }
-    },
-    integrations: [
-        mdx(),
-        sitemap(),
-        tailwind(),
-        image({
-            serviceEntryPoint: "@astrojs/image/sharp"
-        }),
-        prefetch(),
-        react()
-    ]
+    ssr: {
+      external: ["svgo"]
+    }
+  },
+  integrations: [
+    mdx(),
+    sitemap(),
+    tailwind(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp"
+    }),
+    prefetch(),
+    react()
+  ]
 });
