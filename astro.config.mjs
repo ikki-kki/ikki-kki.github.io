@@ -14,8 +14,9 @@ export default defineConfig({
   site: SITE.siteUrl,
   base: "/",
   markdown: {
-    syntaxHighlight: "prism",
-    remarkPlugins: [remarkToc, remarkReadingTime]
+    shikiConfig: {
+      theme: "dracula"
+    }
   },
   vite: {
     optimizeDeps: {

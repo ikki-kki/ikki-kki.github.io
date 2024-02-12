@@ -53,10 +53,10 @@ HTML과 CSS를 제공하는 뷰 컴포넌트만이 비로소 재사용 가능하
 
 뷰 컴포넌트는 자아를 가지고 있으면 안된다. 로직을 담당하는 커스텀 hook또한 뷰 컴포넌트에 있으면 안되며, 오롯이 '보여지는' View 껍데기 역할을 하고 자아는 Controller에 넘겨버리자.
 
-**🤔 그렇다면 어떻게 로직을 위임할 수 있나?**
+**🤔 그렇다면 어떻게 로직을 위임할 수 있나?**  
 💡간단하다. 뷰 컴포넌트를 로직을 둘둘 싸고 있는 이불로 한겹 감싸면 된다. 이걸 컨트롤러 컴포넌트라고 부른다.
 
-**🤔 사용할 때 마다 미묘하게 기능이나 디자인이 다른 컴포넌트를 어떻게 재사용 할 수 있나?**
+**🤔 사용할 때 마다 미묘하게 기능이나 디자인이 다른 컴포넌트를 어떻게 재사용 할 수 있나?**  
 💡간단하다. 컨트롤러 컴포넌트를 여러 개 만들면 된다.
 
 코드의 중복을 최소화 하는 게 좋은 개발인데 중복으로 컴포넌트를 만들라고? 이런생각을 할 수도 있겠다.
@@ -82,7 +82,7 @@ Headless한 형태를 가진 컴포넌트만이 리액트에서 유일하게 '�
 
 예를들어 뷰 컴포넌트의 예시로 아주 간단하게 폼을 헤드리스 형태로 만들어보겠다.
 
-```typescript
+```javascript
 // Form.tsx - Form의 Root가 되는 컴포넌트
 
 const Form = ({ onSubmit, formValues, children }: Props) => (
@@ -105,8 +105,10 @@ export default Form;
 이 헤드리스한 Form 컴포넌트는 어떻게 사용될까?
 아래는 뷰 컴포넌트를 조합해서 사용하는 컨트롤러 컴포넌트의 예시이다
 
-```typescript
+```javascript
 const DefaultForm = () => {
+
+
   const formData = {
     ....
   }
@@ -152,7 +154,7 @@ const DefaultForm = () => {
 열심히 만들었던 DefaultForm을 재사용할 좋은 타이밍이다!
 이날을 위해 컴파운드 컴포넌트로 만들었다. 조건에 따른 분기처리는 너무너무 간단하다. 요구사항에 따라 DefaultForm내에서 UI 분기를 추가한다.
 
-```typescript
+```javascript
 // FormType에 따라 조건부 렌더링을 수행하는 컨트롤러 컴포넌트
 const DefaultForm = ({
   formType,
@@ -203,7 +205,7 @@ formType이라는 Props를 받아 타입에 따른 조건부 렌더링을 충실
 
 개발자는 조금 갸우뚱하지만 잘 만들어둔 DefaultForm 컴포넌트를 수정하면 되겠지 하고 싱글벙글 코드를 짠다
 
-```typescript
+```javascript
 // 세 개의 FormType에 따라 조건부 렌더링을 수행하는 컨트롤러 컴포넌트
 const DefaultForm = ({
   formType,
@@ -312,7 +314,7 @@ Default따위는 존재하지 않는다. 뷰 컴포넌트를 래핑한 컨트롤
 
 개인적인 생각으로는 컨트롤러 컴포넌트를 여러 개 생성하는 건 아래와 크게 다르지 않은 것 같다.
 
-```typescript
+```javascript
 const CharacterSelectForm = new Form("CharacterSelect");
 const SignUpSelectForm = new Form("SignUp");
 const EventForm = new Form("EventForm");

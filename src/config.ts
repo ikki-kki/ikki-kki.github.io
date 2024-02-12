@@ -10,7 +10,7 @@ export const SITE: Site = {
   ogImage: "images/ikkikki.webp",
   keywords:
     "기술 블로그, 개발 블로그, frontend, develop, blog, developer, javascript, react, typescript, web, programming, software, tech",
-  postPerPage: 3
+  postPerPage: 10
 };
 
 // The site uses iconify - you can find icons on https://iconify.design/.
