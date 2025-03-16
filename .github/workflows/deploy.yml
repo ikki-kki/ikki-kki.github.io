@@ -1,46 +1,106 @@
 name: Deploy to GitHub Pages
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 jobs:
-  build:
+  debug:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Debug - Runner Information
+        run: |
+          echo "🔍 Runner Debug Information"
+          echo "------------------------"
+          echo "OS: ${{ runner.os }}"
+          echo "Architecture: ${{ runner.arch }}"
+          echo "Name: ${{ runner.name }}"
+          echo "GitHub Actions Runner Version: $(cat /home/runner/.runner)"
+          echo "------------------------"
+
+      - name: Debug - GitHub Context
+        run: |
+          echo "🔍 GitHub Context Information"
+          echo "------------------------"
+          echo "Repository: ${{ github.repository }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "SHA: ${{ github.sha }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Workflow: ${{ github.workflow }}"
+          echo "------------------------"
+
+      - name: Debug - List Workflow Files
+        run: |
+          echo "🔍 Listing .github directory contents"
+          echo "------------------------"
+          find .github -type f | sort
+          echo "------------------------"
+          echo "Workflow file content:"
+          cat .github/workflows/*.yml || echo "No workflow files found"
+          echo "------------------------"
+
+      - name: Debug - Actions Cache
+        run: |
+          echo "🔍 Actions Cache Information"
+          echo "------------------------"
+          ls -la /home/runner/.cache || echo "Cache directory not accessible"
+          ls -la /home/runner/.cache/github-actions || echo "GitHub Actions cache not found"
+          echo "------------------------"
+
+      - name: Debug - Node Environment
+        run: |
+          echo "🔍 Node Environment"
+          echo "------------------------"
+          node --version
+          npm --version
+          npm list --depth=0
+          echo "------------------------"
+
+      - name: Debug - Available Actions
+        run: |
+          echo "🔍 Checking available actions"
+          echo "------------------------"
+          curl -s https://api.github.com/repos/actions/upload-artifact/tags | grep name | head -n 5
+          curl -s https://api.github.com/repos/actions/upload-pages-artifact/tags | grep name | head -n 5
+          echo "------------------------"
+
+  build:
+    runs-on: ubuntu-latest
+    needs: debug
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20.3.0
+          node-version: "20"
           cache: "npm"
-
       - name: Install dependencies
         run: npm ci
-
-      - name: Build Astro site
+      - name: Build
         run: npm run build
-
-      - name: Upload Pages artifact
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: "dist"
-
+          path: "./dist"
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2
